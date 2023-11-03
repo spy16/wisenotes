@@ -4,6 +4,7 @@ import (
 	log "github.com/sirupsen/logrus"
 	"github.com/spy16/wisenotes/server"
 	"github.com/spy16/wisenotes/storage"
+	"github.com/spy16/wisenotes/ui"
 
 	_ "github.com/libsql/libsql-client-go/libsql"
 	_ "github.com/mattn/go-sqlite3"
@@ -36,7 +37,7 @@ func main() {
 		defer dbClose()
 
 		log.Infof("starting server on %s...", addr)
-		if err := server.Serve(cmd.Context(), ":8080", qu); err != nil {
+		if err := server.Serve(cmd.Context(), ":8080", qu, ui.Handler()); err != nil {
 			log.Fatalf("failed to start server: %v", err)
 		}
 	}

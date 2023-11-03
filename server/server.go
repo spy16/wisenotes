@@ -18,8 +18,10 @@ var (
 )
 
 // Serve starts the server at given address.
-func Serve(ctx context.Context, addr string, queries *db.Queries) error {
+func Serve(ctx context.Context, addr string, queries *db.Queries, ui http.Handler) error {
 	r := chi.NewRouter()
+
+	r.Mount("/", ui)
 
 	r.Route("/api", func(r chi.Router) {
 		r.Get("/profiles", getProfiles(queries))
