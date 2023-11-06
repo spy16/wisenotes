@@ -1,7 +1,12 @@
 <script>
+	import { appConf } from '$lib';
 	import '../app.postcss';
 </script>
 
-<div data-theme="cupcake" class="w-full h-full min-h-[100dvh]">
+<svelte:head>
+	<title>WiseNotes</title>
+</svelte:head>
+
+<div data-theme={$appConf.theme} class="w-full h-full overflow-hidden">
 	<slot />
 </div>
