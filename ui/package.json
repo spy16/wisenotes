@@ -37,6 +37,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"ai": "^2.2.20",
 		"svelte-persisted-store": "^0.7.0"
 	}
 }
